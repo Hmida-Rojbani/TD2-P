@@ -1,0 +1,17 @@
+FUNCTION sumTab(T : ARRAY_OF INTEGER, start : INTEGER, final: INTEGER) : INTEGER
+VAR
+    mid: INTEGER
+    sum1: INTEGER
+    sum2: INTEGER
+BEGIN
+    IF (start = final) THEN // base case
+        RETURN T[start]
+    ELSE
+        mid := (start + final) div 2 // divide
+        sum1:= sumTab(T, start, mid)
+        sum2:= sumTab(T, mid+1, final)
+        RETURN sum1 + sum2 // combine
+    END_IF
+END
+
+// O(N log N)

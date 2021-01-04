@@ -1,0 +1,13 @@
+FUNCTION sumTabIter(T : ARRAY_OF INTEGER) : INTEGER
+VAR
+    sum : INTEGER := 0;
+    i: INTEGER
+BEGIN
+    FOR i FROM 0 TO T.length-1 STEP 1  DO
+        sum := sum + T[i]
+    END_FOR
+
+    RETURN sum
+END
+
+// O(N)

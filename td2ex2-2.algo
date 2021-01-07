@@ -1,0 +1,44 @@
+PROCEDURE min_max_DR(T : ARRAY_OF INTEGER, b : INTEGER, e : INTEGER, VAR min :INTEGER, VAR max : INTEGER) 
+VAR
+    mid : INTEGER
+    mx1 : INTEGER
+    mx2 : INTEGER     
+    mn1 : INTEGER
+    mn2 : INTEGER
+BEGIN
+    IF (b = e) THEN
+        min := T[b]
+        max := T[b]
+
+    ELSE
+        mid := (b + e ) DIV 2
+        min_max_DR(T, b , mid, mn1, mx1)
+        min_max_DR(T, mid +1, e, mn2, mx2)
+
+        IF ( mx1 < mx2) THEN
+            max := mx2
+        ELSE
+            max := mx1
+        END_IF
+
+        IF ( mn1 < mn2) THEN
+            min := mn1
+        ELSE
+            min := mn2
+        END_IF
+
+    END_IF
+
+END
+
+// T(n) = 2 T(n/2) + 2    => T(n) = 3/2 n - 2
+
+// T(n) = 2 (2 T(n/4) + 2) + 2
+//      = 4 T(n/4) + 4 + 2 
+//      = 
+//      = 2^(k-1) T(1) + SUM_(i=1)^k(2^i)
+//      = 2^(k-1)+2^k+2
+//      = (3n/2) -2  avec n puissance de 2
+
+//  O(n logn)
+

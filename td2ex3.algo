@@ -1,0 +1,16 @@
+FUNCTION seekInt(T : ARRAY_OF INTEGER, s :INTEGER,f:INTEGER, a : INTEGER, b : INTEGER) : INTEGER
+VAR
+    mid : INTEGER
+BEGIN
+    mid := (s + f) DIV 2 
+    IF (T[mid] > a AND T[mid] < b) THEN
+        RETURN T[mid]
+    ELSE_IF (T[mid] < a) THEN
+        RETURN seekInt(T, mid + 1, f ,x)
+    ELSE_IF (T[mid] > b) THEN
+        RETURN seekInt(T, s, mid - 1 ,x)
+    END_IF
+END
+
+// T(N) = 1 T(N/2) + O(1) = O(N)
+
